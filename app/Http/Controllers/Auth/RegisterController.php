@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\EmployeeProfile;
+use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -63,10 +65,76 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $lastid = $user->id;
+        // $user->profile()->save(new EmployeeProfile);
+
+       // return  $user = DB::table("users")->insertGetId([
+       //      "name" => $data["name"],
+       //      "email" => $data["email"],
+       //      "password" => Hash::make($data["password"]),
+
+       //  ]);
+
+        // #creation on profiles
+  
+
+        // $id2 = DB::table("employee_profiles")->insert([
+        //     "first_name" => $data["name"],
+        //     "user_id" => $lastid,
+        //     "middle_name" => "",
+        //     "last_name" => "",
+        //     "suffix" => "",
+        //     "birthday" => now(),
+        //     "address" => "",
+        //     "gender" => "Male",
+        //     "reports_to" => "",
+        //     "schedule" => "",
+        //     "department" =>"",
+        //     "position" => "",
+        //     "date_hired" => now(),
+        //     "date_end_contract" => now(),
+        //     "date_separated" => now(),
+        //     "passport_no" => "",
+        //     "passport_expiration" => now(),
+        //     "phone" => "",
+        //     "nationality" => "",
+        //     "religion" => "",
+        //     "marital_status" => "",
+        //     "have_spouse" => "No",
+        //     "number_of_child" => 0,
+        //     "bank_name" => "",
+        //     "bank_accout_no" => "",
+        //     "bank_status" => "Active",
+        //     "salary_bir_status" => "",
+        //     "salary_basis" => "",
+        //     "salary_basic" => 0,
+        //     "salary_allowance" => 0,
+        //     "salary_cola" => 0,
+        //     "primary_contact_name" => "",
+        //     "primary_contact_relationship" => "",
+        //     "primary_contact_phone" => "",
+        //     "secondary_contact_name" => "",
+        //     "secondary_contact_relationship" => "",
+        //     "secondary_contact_phone" => "",
+        //     "employee_status" => "Active",
+        //     "employee_type" => ""]);
+
+
+        /*    $user = User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => bcrypt($data['password']),
+    ]);
+    $user->profile()->save(new Profile);
+    return $user;
+}*/
+
+    
+        
     }
 }
