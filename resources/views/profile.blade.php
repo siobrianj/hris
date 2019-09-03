@@ -32,7 +32,7 @@
 								<div class="profile-view">
 									<div class="profile-img-wrap">
 										<div class="profile-img">
-											<a href="#"><img alt="" src="assets/img/profiles/avatar-02.jpg"></a>
+											<a href="#"><img alt="" src="{{asset("/img/profiles/bri.jpg")}}"></a>
 										</div>
 									</div>
 									<div class="profile-basic">
@@ -78,7 +78,7 @@
 															  </div>
 														   </div>
 														   <a href="profile.html">
-																Jeffery Lalor
+																{{$profile->reports_to}}
 															</a>
 														</div>
 													</li>
